@@ -29,7 +29,7 @@ public class CameraMove : MonoBehaviour
             //　通常のカメラ位置を計算
             var cameraPos = charaLookAtPosition.position + (-charaLookAtPosition.forward * basePos.z) + (Vector3.up * basePos.y);
             //　カメラの位置をキャラクターの後ろ側に移動させる
-            transform.position = Vector3.Lerp(transform.position, cameraPos, cameraMoveSpeed * Time.deltaTime);
+            //transform.position = Vector3.Lerp(transform.position, cameraPos, cameraMoveSpeed * Time.deltaTime);
             transform.LookAt(charaLookAtPosition.position);
 
             // // マウスの移動量を取得

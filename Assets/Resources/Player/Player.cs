@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         // カメラの方向から、X-Z平面の単位ベクトルを取得
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
         // 方向キーの入力値とカメラの向きから、移動方向を決定
-        Vector3 moveForward = cameraForward * inputVertical;
+        Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
  
     	// 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
         rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0)  + Camera.main.transform.right * inputHorizontal * moveSpeed;
@@ -67,9 +67,10 @@ public class Player : MonoBehaviour
         if(transform.position.y < 0f){
             transform.position = startPos;
         }else{
-            rb.AddForce(Vector3.up * (-jumpPower / 10));
+            if(isJump){
+                rb.AddForce(Vector3.up * (-jumpPower / 10));
+            }
         }
-
     }
 
 
@@ -86,6 +87,12 @@ public class Player : MonoBehaviour
             // }
         }
     }
+
+    // private void OnCollisionStay(Collision other) {
+    //     if (other.gameObject.tag != "Ground") {
+    //         isJump = true;
+    //     }
+    // }
 
 
     private void OnTriggerEnter(Collider other) {
