@@ -33,12 +33,9 @@ public class CameraMove : MonoBehaviour
         
         if(!isPause) {
             //　通常のカメラ位置を計算
-            //var cameraPos = charaLookAtPosition.position + (-charaLookAtPosition.forward * basePos.z) + (Vector3.up * basePos.y);
+            var cameraPos = charaLookAtPosition.position + (-charaLookAtPosition.forward * basePos.z) + (Vector3.up * basePos.y);
             //　カメラの位置をキャラクターの後ろ側に移動させる
-            //transform.position = Vector3.Lerp(transform.position, cameraPos, cameraMoveSpeed * Time.deltaTime);
-            //transform.LookAt(charaLookAtPosition.position);
-            //transform.position += charaLookAtPosition.position - charaPos;
-            //charaPos = charaLookAtPosition.position;
+            transform.position = Vector3.Lerp(transform.position, cameraPos, cameraMoveSpeed * Time.deltaTime);
 
             // // マウスの移動量を取得
             float mx = Input.GetAxis("Mouse X");
@@ -48,16 +45,16 @@ public class CameraMove : MonoBehaviour
             if (Mathf.Abs(mx) > 0.00001f)
             {
                 // 回転軸はワールド座標のY軸
-                //transform.RotateAround(charaPos, Vector3.up, mx * Time.deltaTime * 200f);
-                transform.position.x = charaLookAtPosition.position.x + Mathf.Cos(Mathf.PI * mx / 180) * 5;
+                transform.RotateAround(charaLookAtPosition.position, Vector3.up, mx);
+              
             }
     
             // Y方向に一定量移動していれば縦回転
             if (Mathf.Abs(my) > 0.00001f)
             {
                 // 回転軸はカメラ自身のX軸
-                //transform.RotateAround(charaPos, transform.right, -my * Time.deltaTime * 200f);
-                transform.position.y = charaLookAtPosition.position.y + Mathf.Sin(Mathf.PI * my / 180) * 2;
+                transform.RotateAround(charaLookAtPosition.position, transform.right, -my);
+
             }
 
             RaycastHit hit;
@@ -68,7 +65,6 @@ public class CameraMove : MonoBehaviour
             //　レイを視覚的に確認
             Debug.DrawLine(charaLookAtPosition.position, transform.position, Color.red, 0f, false);
     
-            //　スピードを考慮する場合
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(charaLookAtPosition.position - transform.position), cameraRotateSpeed * Time.deltaTime);
         }
     }

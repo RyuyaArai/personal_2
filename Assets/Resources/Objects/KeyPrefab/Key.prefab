@@ -245,8 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142c4d1aff3ae5b44ad73428d3fc6af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 3378157168357533782, guid: 1ad6dbba29c481240846956566f16297, type: 3}
   key: {fileID: 6733473037119588107}
+  keyBlocker: {fileID: 7692960789281092674, guid: 1afcfae46f475f04695b74479187ef16, type: 3}
 --- !u!65 &5163914864438047847
 BoxCollider:
   m_ObjectHideFlags: 0
