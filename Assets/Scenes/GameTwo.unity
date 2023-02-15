@@ -451,6 +451,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: fcadd665b7c2fd34f8742a1963704a9c, type: 2}
+    - target: {fileID: 3893809905666039582, guid: 41a3c4fe3d4725e4887670ed6cce375b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4023664698015010569, guid: 41a3c4fe3d4725e4887670ed6cce375b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1623,7 +1627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008812431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 97.59054, y: -23.241318, z: 260.77417}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
