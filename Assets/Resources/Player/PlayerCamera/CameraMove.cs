@@ -25,7 +25,7 @@ public class CameraMove : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        isPause = MenuManager.instance.GetIsPause();
+        isPause = RestartMenu.instance.GetIsPause();
         
         if(!isPause) {
             //　通常のカメラ位置を計算
