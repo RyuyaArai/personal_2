@@ -9,57 +9,52 @@ public class RestartMenu : MonoBehaviour
     [System.NonSerialized]
     public static RestartMenu instance;
 
-    public GameObject confirmationPanel;
+    public GameObject Exit;
 
 
     private bool isPause;
 
-    void Awake() {
+    private void Awake() {
         if(instance == null){
             instance = this;
         }
     }
 
-    void Start() {
+    private void Start() {
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isPause = false;
-        confirmationPanel.SetActive(false);
+        Exit.SetActive(false);
     }
 
-    void Update() {
+    private void Update() {
         Pause();
-        
-    }
-
-    private void CreateButton() {
-        //GameObject button = GameObject.CreatePrimitive();
     }
 
     private void ReStartButtonSet() {
         if(!reStart.activeSelf) {
             if(Input.GetKeyDown(KeyCode.Escape)) {
             reStart.SetActive(true);
-            confirmationPanel.SetActive(true);
+            Exit.SetActive(true);
             }
-        }else {
+        }else{
             if(Input.GetKeyDown(KeyCode.Escape)) {
             reStart.SetActive(false);
-            confirmationPanel.SetActive(false);
+            Exit.SetActive(false);
             }
         }
     }
 
     private void Pause() {
-        if(!isPause){
+        if(!isPause) {
             if(Input.GetKeyDown(KeyCode.Escape)) {
                 Time.timeScale = 0;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 isPause = true;
             }
-        }else {
+        }else{
             if(Input.GetKeyDown(KeyCode.Escape)) {
                 Time.timeScale = 1;
                 Cursor.visible = false;
@@ -71,7 +66,7 @@ public class RestartMenu : MonoBehaviour
         
     }
 
-    
 
     public bool GetIsPause() { return isPause; }
+
 }

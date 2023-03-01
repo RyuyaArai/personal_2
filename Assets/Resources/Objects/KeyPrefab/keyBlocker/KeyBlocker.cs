@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class KeyBlocker : MonoBehaviour
 {
-
-    [SerializeField]
-    private Transform playerObj;
     [System.NonSerialized]
     public static KeyBlocker instance;
+    [SerializeField]
+    private float blDistance;
+    [SerializeField]
+    private Vector3 plpos;
+    [SerializeField]
+    private GameObject BlockerDeleteobj;
 
+    private GameObject playerObj;
 
-    bool isAlive;
+    private bool isAlive;
+    private bool isDist;
 
     private void Awake() {
         if(instance == null){
@@ -20,30 +25,42 @@ public class KeyBlocker : MonoBehaviour
     }
 
     private void Start() {
-        isAlive=true;
+        isAlive = true;
+        isDist = false;
+        playerObj = GameObject.Find("Player");
+
+        BlockerDeleteobj.SetActive(false);
     }
 
     // Update is called once per frame
-    private void FixedUpdate() {
+    private void Update() {
+        
 
-        var distance = Vector3.Distance(transform.position,playerObj.position);
+        blDistance = Vector3.Distance(transform.position,playerObj.transform.position);
 
-        if(isAlive==false) {
+        if(isAlive == false) {
             Destroy(gameObject);
         }
         
-        // if(distance <= 3){
+        if(blDistance < 3){
+            BlockerDeleteobj.SetActive(true);
+
+            if(Input.GetMouseButtonDown(0)) {
+                Debug.Log("hidari oks");
+                BlockerDeleteobj.SetActive(false);    
+            }
+        }else{
+            BlockerDeleteobj.SetActive(false);
+        }
+    }
+
+    public bool GetKBDist() { return isDist; }
+
+    private void OnCollisionStay(Collision other) {
+        // if(other.gameObject.tag == "Player") {
         //     if(Input.GetMouseButton(0)) {
         //         isAlive = false;
         //     }
         // }
-    }
-
-    private void OnCollisionStay(Collision other) {
-        if(other.gameObject.tag == "Player") {
-            if(Input.GetMouseButton(0)) {
-                isAlive = false;
-            }
-        }
     }
 }

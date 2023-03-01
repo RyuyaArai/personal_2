@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1759728669231486453}
   m_Layer: 0
   m_Name: KeyBlocker
-  m_TagString: Untagged
+  m_TagString: Blocker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,4 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc36fdf2cc6626640b04e4a0e0de6598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObj: {fileID: 1526868870284235879, guid: 41a3c4fe3d4725e4887670ed6cce375b, type: 3}
+  blDistance: 0
+  plpos: {x: 0, y: 0, z: 0}
+  BlockerDeleteobj: {fileID: 7768711960297842975, guid: 533b9c49ea0a6fd468485957379d06b8, type: 3}

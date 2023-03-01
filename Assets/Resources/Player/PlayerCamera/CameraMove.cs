@@ -38,7 +38,7 @@ public class CameraMove : MonoBehaviour
     
             RaycastHit hit;
 
-            var distance = Vector3.Distance(transform.position,charaLookAtPosition.position);
+            float distance = Vector3.Distance(transform.position,charaLookAtPosition.position);
 
             //　キャラクターとカメラの間に障害物があったら障害物の位置にカメラを移動させる
             if (Physics.Linecast(charaLookAtPosition.position, transform.position, out hit, obstacleLayer)) {
