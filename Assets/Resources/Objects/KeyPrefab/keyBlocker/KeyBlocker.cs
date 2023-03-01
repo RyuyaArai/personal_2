@@ -32,18 +32,18 @@ public class KeyBlocker : MonoBehaviour
             Destroy(gameObject);
         }
         
-        if(distance <= 3){
+        // if(distance <= 3){
+        //     if(Input.GetMouseButton(0)) {
+        //         isAlive = false;
+        //     }
+        // }
+    }
+
+    private void OnCollisionStay(Collision other) {
+        if(other.gameObject.tag == "Player") {
             if(Input.GetMouseButton(0)) {
                 isAlive = false;
             }
-        }    
+        }
     }
-
-    // private void OnCollisionStay(Collision other) {
-    //     if(other.gameObject.tag == "Player") {
-    //         if(Input.GetMouseButton(0)) {
-    //             isAlive = false;
-    //         }
-    //     }
-    // }
 }
