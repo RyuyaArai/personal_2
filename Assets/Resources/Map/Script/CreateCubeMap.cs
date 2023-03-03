@@ -21,8 +21,8 @@ public class CreateCubeMap : MonoBehaviour
     private float height = 15;  //高さ
     [SerializeField]
     private float relief = 15f; //起伏
-
-    private float magnification = 2;
+    [SerializeField]
+    private float magnification = 2; //大きさ
 
 
     private float seedX,seedZ;

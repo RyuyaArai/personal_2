@@ -9,14 +9,18 @@ public class BlockerDelete : MonoBehaviour
 
     private GameObject blObj;
 
+    private List<GameObject> BlockerObj;
+
     void Start() {
         BlockerDeleteobj.SetActive(false);
-        
+        BlockerObj = new List<GameObject>();
     }
 
     void Update() {
+        
+        
 
-        bool dist = KeyBlocker.instance.GetKBDist();
+        dist = KeyBlocker.instance.GetKBDist();
         if(dist) {
             BlockerDeleteobj.SetActive(true);
         }else{
