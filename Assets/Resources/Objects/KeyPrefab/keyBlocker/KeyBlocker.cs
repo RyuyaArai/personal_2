@@ -54,6 +54,14 @@ public class KeyBlocker : MonoBehaviour
         if(isAlive == false) {
             Destroy(gameObject);
         }
+        /*
+        ゲームオブジェクトを配列で取得
+        リストにぶち込む
+        近い順にソートする
+        一番近いやつとプレイヤーで距離とる
+        一定距離以内で表示
+        */
+
     }
 
     public bool GetKBDist() { return isDist; }
