@@ -7,24 +7,27 @@ public class BlockerDelete : MonoBehaviour
     [SerializeField]
     private GameObject BlockerDeleteobj;
 
-    private GameObject blObj;
+    //private GameObject[] blockerObj
 
-    private List<GameObject> BlockerObj;
+    private List<GameObject> blockerObj;
 
     void Start() {
         BlockerDeleteobj.SetActive(false);
-        BlockerObj = new List<GameObject>();
+        blockerObj = new List<GameObject>();
     }
 
     void Update() {
         
+        if(blockerObj.Count < GameManager.instance.maxKeyCount) {
+            blockerObj.AddRange(GameObject.FindGameObjectsWithTag("Blocker"));
+        }
+
         
 
-        dist = KeyBlocker.instance.GetKBDist();
-        if(dist) {
-            BlockerDeleteobj.SetActive(true);
-        }else{
-            BlockerDeleteobj.SetActive(false);
-        }
+        // if(dist) {
+        //     BlockerDeleteobj.SetActive(true);
+        // }else{
+        //     BlockerDeleteobj.SetActive(false);
+        // }
     }
 }
