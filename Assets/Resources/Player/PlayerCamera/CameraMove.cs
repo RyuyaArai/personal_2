@@ -49,15 +49,13 @@ public class CameraMove : MonoBehaviour
             }
 
             // X方向に一定量移動していれば横回転
-            if (Mathf.Abs(mx) > 0.00001f)
-            {
+            if (Mathf.Abs(mx) > 0.00001f) {
                 // 回転軸はワールド座標のY軸
                 transform.RotateAround(charaLookAtPosition.position, Vector3.up, mx);
             }
     
             // Y方向に一定量移動していれば縦回転
-            if (Mathf.Abs(my) > 0.00001f)
-            {
+            if (Mathf.Abs(my) > 0.00001f) {
                 // 回転軸はカメラ自身のX軸
                 transform.RotateAround(charaLookAtPosition.position, transform.right, -my);
             }

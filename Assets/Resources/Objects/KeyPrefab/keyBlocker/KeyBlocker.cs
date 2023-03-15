@@ -57,7 +57,7 @@ public class KeyBlocker : MonoBehaviour
 
     }
 
-    public bool GetKBDist() { return isDist; }
+    public float GetBlDistance() { return blDistance; }
 
     private void OnCollisionStay(Collision other) {
         // if(other.gameObject.tag == "Player") {

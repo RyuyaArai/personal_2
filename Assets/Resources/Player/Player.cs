@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
             }
             if(isJump==false){
                 if (Input.GetKeyDown(KeyCode.Space)) {
-                    Debug.Log("space");
                     rb.AddForce(Vector3.up * (jumpPower * 2));
                     isJump=true;
     	        }

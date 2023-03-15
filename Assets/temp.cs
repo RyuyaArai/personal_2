@@ -21,7 +21,7 @@ public class temp : MonoBehaviour
     [SerializeField]
     private Vector3 blpos;
     [SerializeField]
-    private float distance;
+    private float[] distance;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +32,7 @@ public class temp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        plpos = pltra.position;
-        blpos = bltra.position;
-        distance = Vector3.Distance(plpos,blpos);
+
+
     }
 }
