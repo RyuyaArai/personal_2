@@ -32,7 +32,6 @@ public class KeyBlocker : MonoBehaviour
         BlockerDeleteobj.SetActive(false);
     }
 
-    // Update is called once per frame
     private void Update() {
         
         blDistance = Vector3.Distance(transform.position,playerObj.transform.position);
@@ -45,7 +44,6 @@ public class KeyBlocker : MonoBehaviour
         
         if(isDist) {
             if(Input.GetMouseButtonDown(0)) {
-                Debug.Log("hidari oks");
                 isAlive = false;
             }
         }
@@ -58,12 +56,4 @@ public class KeyBlocker : MonoBehaviour
     }
 
     public float GetBlDistance() { return blDistance; }
-
-    private void OnCollisionStay(Collision other) {
-        // if(other.gameObject.tag == "Player") {
-        //     if(Input.GetMouseButton(0)) {
-        //         isAlive = false;
-        //     }
-        // }
-    }
 }

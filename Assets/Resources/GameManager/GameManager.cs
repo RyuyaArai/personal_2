@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate=60;
         keyCount=0;
         string activeSceneName = SceneManager.GetActiveScene().name;
-        if(activeSceneName=="GameTwo"){
+        if(activeSceneName=="GameOne"){
             Cursor.visible = false;
             Cursor.lockState=CursorLockMode.Locked;
         }else{

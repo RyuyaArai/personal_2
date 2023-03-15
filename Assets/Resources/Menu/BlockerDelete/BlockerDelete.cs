@@ -47,16 +47,5 @@ public class BlockerDelete : MonoBehaviour
         if(blockerObj[0].GetComponent<KeyBlocker>().GetBlDistance() < 3 && blockerObj[0].GetComponent<KeyBlocker>().GetBlDistance() != 0) {
             BlockerDeleteobj.SetActive(true);
         }
-        /*
-        近い順にソートする
-        一番近いやつとプレイヤーで距離とる
-        一定距離以内で表示
-        */
-
-        // if(dist) {
-        //     BlockerDeleteobj.SetActive(true);
-        // }else{
-        //     BlockerDeleteobj.SetActive(false);
-        // }
     }
 }
