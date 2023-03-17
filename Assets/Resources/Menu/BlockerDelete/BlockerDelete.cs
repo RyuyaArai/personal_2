@@ -8,8 +8,6 @@ public class BlockerDelete : MonoBehaviour
     public static BlockerDelete instance;
     [SerializeField]
     private GameObject BlockerDeleteUI;
-
-    //private GameObject[] blockerObj
     [SerializeField]
     private List<GameObject> blockerObj;
 
@@ -19,12 +17,12 @@ public class BlockerDelete : MonoBehaviour
         }
     }
 
-    void Start() {
+    private void Start() {
         BlockerDeleteUI.SetActive(false);
         blockerObj = new List<GameObject>();
     }
 
-    void FixedUpdate() {
+    private void FixedUpdate() {
         
         bool isPause = RestartMenu.instance.GetIsPause();
 
@@ -52,4 +50,7 @@ public class BlockerDelete : MonoBehaviour
             BlockerDeleteUI.SetActive(true);
         }
     }
+
+    public void SetActiveBDUI(bool TF) { BlockerDeleteUI.SetActive(TF); }
+
 }

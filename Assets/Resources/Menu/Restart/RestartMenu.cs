@@ -6,11 +6,12 @@ public class RestartMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject reStart;
+    [SerializeField]
+    private GameObject Exit;
+    [SerializeField]
+    private GameObject config;
     [System.NonSerialized]
     public static RestartMenu instance;
-
-    public GameObject Exit;
-
 
     private bool isPause;
 
@@ -25,47 +26,55 @@ public class RestartMenu : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isPause = false;
-        Exit.SetActive(false);
+        SetActiveButton(false);
     }
 
     private void Update() {
-        Pause();
+
+        bool esc = Input.GetKeyDown(KeyCode.Escape);
+
+        Pause(esc);
     }
 
-    private void ReStartButtonSet() {
+    private void ReStartButtonSet(bool esc) {
         if(!reStart.activeSelf) {
-            if(Input.GetKeyDown(KeyCode.Escape)) {
-            reStart.SetActive(true);
-            Exit.SetActive(true);
+            if(esc) {
+                BlockerDelete.instance.SetActiveBDUI(false);
+                SetActiveButton(true);
             }
         }else{
-            if(Input.GetKeyDown(KeyCode.Escape)) {
-            reStart.SetActive(false);
-            Exit.SetActive(false);
+            if(esc) {
+                SetActiveButton(false);
             }
         }
     }
 
-    private void Pause() {
+    private void Pause(bool esc) {
         if(!isPause) {
-            if(Input.GetKeyDown(KeyCode.Escape)) {
+            if(esc) {
                 Time.timeScale = 0;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 isPause = true;
             }
         }else{
-            if(Input.GetKeyDown(KeyCode.Escape)) {
+            if(esc) {
                 Time.timeScale = 1;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 isPause = false;
             }
         }
-        ReStartButtonSet();
+        ReStartButtonSet(esc);
         
     }
 
+
+    private void SetActiveButton(bool TF) {
+        reStart.SetActive(TF);
+        Exit.SetActive(TF);
+        config.SetActive(TF);
+    }
 
     public bool GetIsPause() { return isPause; }
 
