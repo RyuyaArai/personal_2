@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
- //　キャラクターのTransform
+    //　キャラクターのTransform
     [SerializeField]
     private Transform charaLookAtPosition;
     //　カメラの回転スピード
@@ -13,15 +13,14 @@ public class CameraMove : MonoBehaviour
     //　カメラのキャラクターからの相対値を指定
     [SerializeField]
     private Vector3 basePos;
-    // 障害物とするレイヤー
+    //  障害物とするレイヤー
     [SerializeField]
     private LayerMask obstacleLayer;
  
     private float cameraMoveSpeed = 5; 
 
-    private bool isPause;
-
     private void Start() {
+        
     }
 
     private void FixedUpdate() {
@@ -33,7 +32,7 @@ public class CameraMove : MonoBehaviour
         //　通常のカメラ位置を計算
         var cameraPos = charaLookAtPosition.position + (-transform.forward * basePos.z) + (Vector3.up * basePos.y);
 
-        // // マウスの移動量を取得
+        //  マウスの移動量を取得
         float mx = Input.GetAxis("Mouse X");
         float my = Input.GetAxis("Mouse Y");
     

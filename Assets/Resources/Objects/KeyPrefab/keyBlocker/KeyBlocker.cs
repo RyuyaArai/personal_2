@@ -16,7 +16,6 @@ public class KeyBlocker : MonoBehaviour
     private GameObject playerObj;
 
     private bool isAlive;
-    private bool isDist;
 
     private void Awake() {
         if(instance == null){
@@ -26,7 +25,6 @@ public class KeyBlocker : MonoBehaviour
 
     private void Start() {
         isAlive = true;
-        isDist = false;
         playerObj = GameObject.Find("Player");
 
         BlockerDeleteobj.SetActive(false);
