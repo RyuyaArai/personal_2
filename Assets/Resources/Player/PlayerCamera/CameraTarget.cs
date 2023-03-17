@@ -7,14 +7,15 @@ public class CameraTarget : MonoBehaviour
     [SerializeField]
     private Transform charaTransform;
 
-    // Start is called before the first frame update
     void Start() {
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+        bool isPause = RestartMenu.instance.GetIsPause();
+
+        if(isPause) { return; }
         transform.position = charaTransform.position;        
     }
 }

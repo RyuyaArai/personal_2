@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189fb1e2742592a4a897979ab8ca8a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlockerDeleteobj: {fileID: 1928948116}
+  BlockerDeleteUI: {fileID: 1928948116}
   blockerObj: []
 --- !u!224 &1116503893 stripped
 RectTransform:

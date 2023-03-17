@@ -32,38 +32,20 @@ public class KeyBlocker : MonoBehaviour
         BlockerDeleteobj.SetActive(false);
     }
 
-    // Update is called once per frame
     private void Update() {
-        
+
+        bool isPause = RestartMenu.instance.GetIsPause();
+
+        if(isPause) { return; }
+
         blDistance = Vector3.Distance(transform.position,playerObj.transform.position);
 
-        
         if(blDistance < 3 && isAlive ==true) {
-            isDist = true;
-            
-        }
-        
-        if(isDist) {
             if(Input.GetMouseButtonDown(0)) {
-                Debug.Log("hidari oks");
-                isAlive = false;
+                Destroy(gameObject);
             }
         }
-
-
-        if(isAlive == false) {
-            Destroy(gameObject);
-        }
-
     }
 
     public float GetBlDistance() { return blDistance; }
-
-    private void OnCollisionStay(Collision other) {
-        // if(other.gameObject.tag == "Player") {
-        //     if(Input.GetMouseButton(0)) {
-        //         isAlive = false;
-        //     }
-        // }
-    }
 }

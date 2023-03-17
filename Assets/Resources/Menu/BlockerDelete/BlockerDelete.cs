@@ -7,7 +7,7 @@ public class BlockerDelete : MonoBehaviour
     [System.NonSerialized]
     public static BlockerDelete instance;
     [SerializeField]
-    private GameObject BlockerDeleteobj;
+    private GameObject BlockerDeleteUI;
 
     //private GameObject[] blockerObj
     [SerializeField]
@@ -20,12 +20,16 @@ public class BlockerDelete : MonoBehaviour
     }
 
     void Start() {
-        BlockerDeleteobj.SetActive(false);
+        BlockerDeleteUI.SetActive(false);
         blockerObj = new List<GameObject>();
     }
 
     void FixedUpdate() {
         
+        bool isPause = RestartMenu.instance.GetIsPause();
+
+        if(isPause) { return; }
+
         //参照しなおすためにリセット
         blockerObj.Clear();
 
@@ -42,21 +46,10 @@ public class BlockerDelete : MonoBehaviour
             }
         );
         
-        BlockerDeleteobj.SetActive(false);
+        BlockerDeleteUI.SetActive(false);
         
         if(blockerObj[0].GetComponent<KeyBlocker>().GetBlDistance() < 3 && blockerObj[0].GetComponent<KeyBlocker>().GetBlDistance() != 0) {
-            BlockerDeleteobj.SetActive(true);
+            BlockerDeleteUI.SetActive(true);
         }
-        /*
-        近い順にソートする
-        一番近いやつとプレイヤーで距離とる
-        一定距離以内で表示
-        */
-
-        // if(dist) {
-        //     BlockerDeleteobj.SetActive(true);
-        // }else{
-        //     BlockerDeleteobj.SetActive(false);
-        // }
     }
 }
