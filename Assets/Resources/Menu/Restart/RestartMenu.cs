@@ -8,8 +8,6 @@ public class RestartMenu : MonoBehaviour
     private GameObject reStart;
     [SerializeField]
     private GameObject Exit;
-    [SerializeField]
-    private GameObject config;
     [System.NonSerialized]
     public static RestartMenu instance;
 
@@ -73,7 +71,6 @@ public class RestartMenu : MonoBehaviour
     private void SetActiveButton(bool TF) {
         reStart.SetActive(TF);
         Exit.SetActive(TF);
-        config.SetActive(TF);
     }
 
     public bool GetIsPause() { return isPause; }

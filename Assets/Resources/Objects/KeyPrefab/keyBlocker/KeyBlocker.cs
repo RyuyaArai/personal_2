@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class KeyBlocker : MonoBehaviour
 {
+    private enum BlockType {
+        normal = 1,
+        grass,
+        mud
+    };
+    
     [System.NonSerialized]
     public static KeyBlocker instance;
     [SerializeField]
@@ -17,6 +23,8 @@ public class KeyBlocker : MonoBehaviour
 
     private bool isAlive;
 
+    private BlockType myType;
+
     private void Awake() {
         if(instance == null){
             instance = this;
@@ -27,12 +35,15 @@ public class KeyBlocker : MonoBehaviour
         isAlive = true;
         playerObj = GameObject.Find("Player");
 
-        BlockerDeleteobj.SetActive(false);
+        //float tempType = Random.value * 3;
+        //myType = Mathf.RoundToInt(tempType);
     }
 
     private void Update() {
 
         bool isPause = RestartMenu.instance.GetIsPause();
+
+        
 
         if(isPause) { return; }
 
