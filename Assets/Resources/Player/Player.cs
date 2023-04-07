@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private enum attackType{
+        normal = 1,
+        fire,
+        water
+    };
+
+    [System.NonSerialized]
+    public static Player instance;
     [SerializeField]
     private Rigidbody rb;
     [SerializeField]
@@ -21,8 +29,15 @@ public class Player : MonoBehaviour
     private float mapWidth;
     private float mapMag;
 
+    private attackType AtMyType;
 
-    void Start(){
+    private void Awake() {
+        if(instance == null){
+            instance = this;
+        }
+    }
+
+    private void Start(){
     	rb = GetComponent<Rigidbody>();
         isJump = true;
         mapDepth = CreateCubeMap.instance.GetDepth();
@@ -32,12 +47,12 @@ public class Player : MonoBehaviour
         go.transform.position = startPos;
     }
 
-    void Update() {
-    inputHorizontal = Input.GetAxisRaw("Horizontal");
-    inputVertical = Input.GetAxisRaw("Vertical");
+    private void Update() {
+        inputHorizontal = Input.GetAxis("Horizontal");
+        inputVertical = Input.GetAxis("Vertical");
     }
 
-    void FixedUpdate() {
+    private void FixedUpdate() {
         bool isPause = RestartMenu.instance.GetIsPause();
 
         if(isPause){return;}
@@ -60,6 +75,8 @@ public class Player : MonoBehaviour
     	    }
         }
 
+        TypeSelect();
+
         if(transform.position.y < 0f){
             transform.position = startPos;
         }else{
@@ -70,15 +87,26 @@ public class Player : MonoBehaviour
         
     }
 
+    private void TypeSelect() {
+        if(Input.GetKeyDown(KeyCode.Alpha1)) {
+            AtMyType = attackType.normal;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2)) {
+            AtMyType = attackType.fire;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3)) {
+            AtMyType = attackType.water;
+        }
+        
+    }
+
+    public int GetAttackType() { return (int)AtMyType; } 
+
     private void OnCollisionEnter(Collision other){
         if(isJump == true) {
             if (other.gameObject.tag == "Ground") {
 	        	isJump = false;
     	    }
         }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-
     }
 }
